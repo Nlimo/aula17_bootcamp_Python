@@ -32,3 +32,8 @@ session.add(novo_usuario)
 session.commit()
 
 print("Usuário inserido com sucesso.")
+
+# Consultando registros na tabela
+
+usuario = session.query(Usuario).filter_by(nome='João').first()
+print(f"Usuário encontrado: {usuario.nome}, Idade: {usuario.idade}")
