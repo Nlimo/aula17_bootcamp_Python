@@ -21,3 +21,14 @@ class Usuario(Base):
 # Criar uma tabela no banco de dados
 
 Base.metadata.create_all(engine)
+
+from sqlalchemy.orm import sessionmaker
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+novo_usuario = Usuario(nome='João', idade=28)
+session.add(novo_usuario)
+session.commit()
+
+print("Usuário inserido com sucesso.")
