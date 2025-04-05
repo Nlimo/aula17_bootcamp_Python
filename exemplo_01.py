@@ -37,3 +37,12 @@ print("Usuário inserido com sucesso.")
 
 usuario = session.query(Usuario).filter_by(nome='João').first()
 print(f"Usuário encontrado: {usuario.nome}, Idade: {usuario.idade}")
+
+Session = sessionmaker(bind=engine)
+
+with Session() as session:
+    novo_usuario = Usuario(nome='Ana', idade=25)
+    session.add(novo_usuario)
+    # O commit é feito automaticamente aqui, se não houver exceções
+    # O rollback é automaticamente chamado se uma exceção ocorrer
+    # A sessão é fechada automaticamente ao sair do bloco with
