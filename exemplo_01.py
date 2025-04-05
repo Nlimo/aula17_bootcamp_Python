@@ -17,3 +17,7 @@ class Usuario(Base):
     id = Column(Integer, primary_key= True)
     nome = Column(String)
     idade = Column(Integer)
+
+# Criar uma tabela no banco de dados
+
+Base.metadata.create_all(engine)
