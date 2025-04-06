@@ -16,6 +16,7 @@ class Produto(Base):
     __tablename__  = 'produtos'
 
     id = Column(Integer, primary_key=True)
+    id_fornecedor = (Column, ForeignKey('fornecedores.id'))
     nome = Column(String)
     valor = Column(Integer)
 
@@ -27,6 +28,7 @@ class Fornecedor(Base):
     __tablename__  = 'fornecedores'
 
     id = Column(Integer, primary_key=True)
+    nome = Column(String)
     id_produto = Column(Integer, ForeignKey('produtos.id'))
 
 # Relacionamento com Produto
