@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 
-# Conctar sqlite em memória
+# Conectar sqlite em memória
 engine = create_engine('sqlite:///meubancodbdesafio.db', echo=True)
 
 print('Coneção de sistema estabelecida')
@@ -20,7 +20,7 @@ class Produto(Base):
     valor = Column(Integer)
 
 # Opcional: backref para acessar os fornecedores do produto
-fornecedores = relationship("Fornecedor", back_populates="produto")
+fornecedores = relationship("Fornecedor", back_populates="produtos")
 
 
 class Fornecedor(Base):
@@ -32,3 +32,5 @@ class Fornecedor(Base):
 # Relacionamento com Produto
 produto = relationship("Produto", back_populates="fornecedores")
 
+# Criando banco com as tabelas
+Base.metadata.create_all(engine)
